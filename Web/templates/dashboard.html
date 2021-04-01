@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ru">
+	<head>
+		<meta charset="UTF-8" />
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1.0, user-scalable=no"
+		/>
+		<title>%message%</title>
+		<link rel="stylesheet" href="../static/dashboard.css" />
+		<script src="../static/doT.min.js"></script>
+		<script> 
+			var sumLimit = %sumLimit%;
+			var linkId = '%linkId%';
+		</script>
+	</head>
+
+	<body>
+		<div class="app-container">
+			<header>
+				<h1>Сбор средств</h1>
+				<h3 class="header-name">%name%</h3>
+			</header>
+
+			<div class="info-card">
+				<section class="block_purpose">
+					<h2 class="title_purpose">%message%</h2>
+					<a class="button" href="/links/%linkId%">Перевести</a>
+				</section>
+				<section class="block_progress">
+					<p class="title_bar">
+						Цель:
+						<span
+							data-sumlimit="%sumLimit%"
+							class="target-sum highlight"
+						></span
+						>₽
+					</p>
+					<div class="bar">
+						<progress value="0" max="100"></progress>
+						<div class="progress-text-block">
+							<span class="percent_progress">0%</span>
+							<span class="purpose">
+								Собрано:
+								<span class="raised-sum highlight"></span>₽
+							</span>
+						</div>
+					</div>
+				</section>
+			</div>
+
+			<div class="transactions-list_container">
+				<div class="transactions-list"></div>
+				<div class="transactions-list_controls">
+					<div
+						class="transactions-list_previous-page-button button disabled"
+					>
+						<svg class="arrow-icon">
+							<use xlink:href="#arrow" />
+						</svg>
+					</div>
+					<div class="transactions-list_next-page-button button">
+						<svg class="arrow-icon rotated">
+							<use xlink:href="#arrow" />
+						</svg>
+					</div>
+				</div>
+				<div class="transactions-list_processing"></div>
+			</div>
+		</div>
+
+		<script id="transactionfetcherrortmpl" type="text/x-dot-template">
+			<p class="transaction_fetch-error">
+			    Ошибка во время загрузки транзакций
+			</p>
+		</script>
+
+		<script id="transactiontmpl" type="text/x-dot-template">
+			<div class="transactions-list_item">
+			    <span class="transaction_amount">{{=it.sum}}₽</span>
+			    <span class="transaction_sender-name" title="{{=it.name}}"">{{=it.name}}</span>
+			    <span class="transaction_date">{{=it.date}}</span>
+			</div>
+		</script>
+
+		<script src="../static/dashboard.js"></script>
+
+		<svg>
+			<symbol id="arrow" viewBox="0 0 492 492">				
+				<g>
+					<g>
+						<path d="M464.344,207.418l0.768,0.168H135.888l103.496-103.724c5.068-5.064,7.848-11.924,7.848-19.124
+							c0-7.2-2.78-14.012-7.848-19.088L223.28,49.538c-5.064-5.064-11.812-7.864-19.008-7.864c-7.2,0-13.952,2.78-19.016,7.844
+							L7.844,226.914C2.76,231.998-0.02,238.77,0,245.974c-0.02,7.244,2.76,14.02,7.844,19.096l177.412,177.412
+							c5.064,5.06,11.812,7.844,19.016,7.844c7.196,0,13.944-2.788,19.008-7.844l16.104-16.112c5.068-5.056,7.848-11.808,7.848-19.008
+							c0-7.196-2.78-13.592-7.848-18.652L134.72,284.406h329.992c14.828,0,27.288-12.78,27.288-27.6v-22.788
+							C492,219.198,479.172,207.418,464.344,207.418z"/>
+					</g>
+				</g>
+			</symbol>
+		</svg>
+	</body>
+</html>

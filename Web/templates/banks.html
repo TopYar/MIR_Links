@@ -1,0 +1,205 @@
+<html>
+	<head>
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1.0, user-scalable=no"
+		/>
+		<link
+			rel="stylesheet"
+			type="text/css"
+			href="//fonts.googleapis.com/css?family=Raleway"
+		/>
+		<title>Выбор банка</title>
+	</head>
+	<body>
+		<style>
+			html,
+			body {
+				font-family: 'Raleway', 'Montserrat', sans-serif;
+				width: 99%;
+				height: 99%;
+				background: #f4f4f4;
+				justify-content: center;
+				align-items: center;
+				margin: 0 auto;
+			}
+			#banks {
+				padding: 80px;
+				padding-top: 35px;
+				display: grid;
+				grid-gap: 15px;
+				overflow: hidden;
+				/* grid-template-columns: repeat(auto-fill, 200px); */
+				grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+				/*   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr) 150px); */
+				grid-auto-flow: dense;
+			}
+
+			.item {
+				position: relative;
+				/*padding: 7px 15px;
+			border: 15px solid #B0C5FF;*/
+				background-image: linear-gradient(
+					224deg,
+					#b0c5ff 0%,
+					#26145f 100%
+				);
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				font-size: 35px;
+				font-family: 'Montserrat', sans-serif;
+				color: #b0c5ff;
+				text-shadow: 0 1px 1px #26145f;
+				border-radius: 16px;
+				box-shadow: 0 0 12px rgba(0, 0, 0, 0.2);
+			}
+			.item::after {
+				display: block;
+				content: '';
+				/* 16:9 aspect ratio */
+				padding-bottom: 56.25%;
+			}
+
+			.panel {
+				display: flex;
+				flex-direction: column;
+				width: 98%;
+				max-width: 780px;
+				background-color: rgb(255, 255, 255);
+				box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.2);
+				margin: 0 auto;
+				margin-top: 50px;
+				border-radius: 20px;
+			}
+
+			.search {
+				display: block;
+				width: 60%;
+				font: inherit;
+				padding: 8px;
+				margin: 16px auto;
+				border: 1px solid #aaa;
+				border-radius: 4px;
+			}
+
+			.hidden {
+				display: none;
+			}
+
+			img {
+				object-fit: cover;
+				object-position: center center;
+				width: 100%;
+				height: 100%;
+				border-radius: 14px;
+				position: absolute;
+			}
+
+			img {
+				-moz-transition: all 0.3s ease-out;
+				-o-transition: all 0.3s ease-out;
+				-webkit-transition: all 0.3s ease-out;
+			}
+
+			img:hover {
+				-webkit-transform: scale(1.05);
+				-moz-transform: scale(1.05);
+				-o-transform: scale(1.05);
+			}
+
+			a {
+				text-decoration: none;
+			}
+			h1 {
+				margin: 0;
+				margin-top: 37px;
+				text-align: center;
+				font-size: 2.4em;
+			}
+			@media (max-width: 628px) {
+				#banks {
+					padding: 40px;
+				}
+
+				.panel {
+					margin-top: 0;
+				}
+
+				.search {
+					width: 90%;
+				}
+
+				h1 {
+					font-size: 2em;
+				}
+			}
+		</style>
+		<div class="panel">
+			<div>
+				<h1>Выберите ваш банк</h1>
+				<input
+					type="text"
+					placeholder="Введите строку для поиска"
+					class="search"
+				/>
+			</div>
+			<div id="banks">
+				<a href="https://yellow.mir.api.yar.cx/links/%linkId%">
+					<div class="item" data-name="тиффоньк банк">
+						<img src="https://yar.cx/img/yellow_bank.jpg" />
+					</div>
+				</a>
+				<a href="https://green.mir.api.yar.cx/links/%linkId%">
+					<div class="item" data-name="барабанк">
+						<img src="https://yar.cx/img/green_bank.jpg" />
+					</div>
+				</a>
+				<a href="https://blue.mir.api.yar.cx/links/%linkId%">
+					<div class="item" data-name="бтв">
+						<img src="https://yar.cx/img/blue_bank.jpg" />
+					</div>
+				</a>
+				<a href="https://red.mir.api.yar.cx/links/%linkId%">
+					<div class="item" data-name="бета-банк">
+						<img src="https://yar.cx/img/red_bank.jpg" />
+					</div>
+				</a>
+				<a href="https://orange.mir.api.yar.cx/links/%linkId%">
+					<div class="item" data-name="ракетабанк">
+						<img src="https://yar.cx/img/orange_bank.jpg" />
+					</div>
+				</a>
+				<a href=" mirlinks2://resolve/links/%linkId%">
+					<div class="item" data-name="закрытие">
+						<img src="https://yar.cx/img/lightblue_bank.jpg" />
+					</div>
+				</a>
+			</div>
+		</div>
+
+		<script>
+			const banksLinks = document.querySelector('#banks').children
+			const searchbar = document.querySelector('.search')
+
+			searchbar.addEventListener('input', e => {
+				console.log(e)
+				filter(searchbar.value)
+			})
+
+			const filter = query => {
+				for (let i = 0; i < banksLinks.length; i++) {
+					const bank = banksLinks[i]
+
+					if (
+						!bank.children[0].dataset.name.includes(
+							query.toLowerCase()
+						)
+					)
+						bank.classList.add('hidden')
+					else bank.classList.remove('hidden')
+				}
+			}
+		</script>
+	</body>
+</html>

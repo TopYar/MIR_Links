@@ -1,0 +1,361 @@
+html {
+	height: 100%;
+	/* /* background: -webkit-linear-gradient(to right, #000428, #004e92); */
+	/* background: linear-gradient(to right, #000428, #004e92); */
+	background-image: linear-gradient(135deg, #09203f 0%, #204060 100%);
+	background-size: cover;
+	background-attachment: fixed;
+	font-size: 8px;
+}
+
+body {
+	font-family: 'Montserrat', Arial, Helvetica, sans-serif;
+	color: #fff;
+	padding: 1rem 0;
+}
+
+h1 {
+	text-align: center;
+	font-size: 5rem;
+	font-weight: 500;
+	margin: 0;
+}
+
+p,
+span {
+	font-weight: 200;
+}
+
+/*––––––––––––––––––Блок информации и перевода––––––––––––––––*/
+
+.highlight {
+	font-weight: 500;
+}
+
+.block_purpose {
+	flex-grow: 1;
+	display: flex;
+	flex-flow: column nowrap;
+	justify-content: center;
+	text-align: center;
+}
+
+.block_purpose .button {
+	align-self: center;
+	justify-content: center;
+	align-content: center;
+	text-align: center;
+}
+
+.title_purpose {
+	margin: 2rem 0 1rem 0;
+	font-size: 3rem;
+	font-weight: 500;
+}
+
+.header-name {
+	margin: 12px 0 0 0;
+	font-weight: 300;
+	font-size: 3rem;
+	opacity: 75%;
+	text-align: center;
+}
+
+a {
+	text-decoration: none;
+	display: inline-block;
+	font-size: 2rem;
+	font-weight: 700;
+	color: #4a90e2;
+}
+
+a:visited {
+	color: #4a90e2;
+}
+
+.button {
+	padding: 1rem 3rem;
+	border: 3px solid #4a90e2;
+	transition: background-color 700ms ease, box-shadow 700ms ease,
+		color 700ms ease;
+	box-shadow: none;
+	border-radius: 4px;
+}
+
+.button:hover {
+	color: white;
+	background: #4a90e2;
+}
+
+/*––––––––––––––––––Блок прогресса––––––––––––––––*/
+
+.block_progress {
+	flex-grow: 1;
+	width: 400px;
+	box-sizing: border-box;
+	text-align: right;
+}
+
+.title_bar {
+	margin: 32px 0px 8px;
+	text-align: right;
+	font-size: 3rem;
+}
+
+/*--Прогресс--*/
+
+.bar {
+	width: 100%;
+}
+
+progress {
+	width: 100%;
+}
+
+.progress-text-block {
+	font-size: 2rem;
+	font-weight: 100;
+	display: flex;
+	flex-flow: row nowrap;
+	justify-content: space-between;
+	padding-top: 8px;
+}
+
+progress[value] {
+	appearance: none;
+	height: 3rem;
+	-webkit-animation: animate-stripes 5s linear infinite;
+	animation: animate-stripes 5s linear infinite;
+	border-radius: 16px;
+	overflow: hidden;
+}
+
+progress[value]::-webkit-progress-bar {
+	background-color: whiteSmoke;
+	box-shadow: 0 2px 3px rgba(0, 0, 0, 0.5) inset;
+}
+
+progress[value]::-webkit-progress-value {
+	/* Если хочется без линий - здесь прописать 0px 0px */
+	/* background-size: 35px 20px, 100% 100%, 100% 100%; */
+
+	/* background-image: -webkit-linear-gradient(
+			135deg,
+			transparent,
+			transparent 33%,
+			rgba(0, 0, 0, 0.1) 33%,
+			rgba(0, 0, 0, 0.1) 66%,
+			transparent 66%
+		),
+		-webkit-linear-gradient(top, rgba(255, 255, 255, 0.25), rgba(0, 0, 0, 0.2)),
+		-webkit-linear-gradient(left, #09c, #afcde7); */
+	background-image: linear-gradient(90deg, #a8e063 0%, #56ab2f 100%);
+	transition: width 1s;
+	border-radius: 16px;
+}
+
+@-webkit-keyframes animate-stripes {
+	0% {
+		background-position: 0px 0px;
+	}
+	100% {
+		background-position: -100px 0px;
+	}
+}
+
+@keyframes animate-stripes {
+	100% {
+		background-position: -100px 0px;
+	}
+}
+
+.app-container {
+	width: 60%;
+	max-width: 1024px;
+	background-color: #001429;
+	margin: 2rem auto;
+	padding: 4rem;
+	border-radius: 4px;
+}
+
+.info-card {
+	display: flex;
+	flex-flow: row nowrap;
+	justify-content: space-between;
+	margin-bottom: 1rem;
+}
+
+.info-card > section {
+	margin: 0 3rem;
+	width: 50%;
+	height: 25rem;
+}
+
+.transactions-list_container {
+	color: #c2e0ff;
+}
+
+.transactions-list {
+	position: relative;
+}
+
+.transactions-list_item {
+	background: #001e3d; /* 0a85ff */
+	display: flex;
+	justify-content: space-between;
+	height: 10rem;
+	line-height: 50px;
+	overflow: hidden;
+	border-radius: 8px;
+	align-items: center;
+	margin: 2px 0;
+	transition: all 0.3s ease-in;
+}
+
+.transactions-list_item:hover {
+	cursor: pointer;
+}
+
+.transactions-list_item:hover {
+	color: #fff;
+}
+
+.transactions-list_item:hover .transaction_amount {
+	background-color: #56ab2f;
+	color: #fff;
+}
+
+.transaction_amount {
+	display: flex;
+	position: relative;
+	transition: inherit;
+	justify-content: center;
+	align-items: center;
+	width: 25%;
+	min-width: 20rem;
+	height: 100%;
+	font-weight: 500;
+	font-size: 3rem;
+	color: #56ab2f;
+	border-radius: 8px;
+}
+
+.transaction_sender-name {
+	font-size: 2.5rem;
+	font-weight: bold;
+	flex-grow: 1;
+	margin: 0 1rem 0 1.5rem;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	text-align: center;
+}
+
+.transaction_date {
+	font-size: 2rem;
+	padding-right: 2rem;
+	font-weight: 400;
+}
+
+.transactions-list_processing {
+	display: none;
+}
+
+.transactions-list_container.disabled .transactions-list:after {
+	content: '🚧';
+	display: flex;
+	position: absolute;
+	bottom: 0;
+	height: 100%;
+	width: 100%;
+	justify-content: center;
+	align-items: center;
+	background: rgba(0, 0, 0, 0.5);
+	font-size: 10rem;
+}
+
+.transaction_fetch-error {
+	font-size: 46px;
+	font-weight: bold;
+	color: #f24c00;
+	text-align: center;
+}
+
+.transactions-list_controls {
+	display: flex;
+	flex-flow: row nowrap;
+	border-radius: 0.5rem;
+	margin: 3rem auto 0;
+	justify-content: center;
+}
+
+.transactions-list_controls > div {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 12rem;
+	padding: 0.5rem 2rem;
+	max-height: 6rem;
+	font-size: 4rem;
+	font-weight: 500;
+	box-sizing: content-box;
+	cursor: pointer;
+}
+
+.transactions-list_controls > div.disabled {
+	background-color: #636e72;
+	border-color: #636e72;
+	cursor: default;
+}
+
+.transactions-list_previous-page-button {
+	border-radius: 0.5rem 0 0 0.5rem;
+}
+
+.transactions-list_next-page-button {
+	border-radius: 0 0.5rem 0.5rem 0;
+}
+
+.arrow-icon {
+	height: 2rem;
+	fill: #fff;
+}
+
+.rotated {
+	transform: rotateZ(180deg);
+}
+
+@media screen and (max-width: 1023px) {
+	html {
+		font-size: 6px;
+	}
+
+	.app-container {
+		position: absolute;
+		top: 0;
+		left: 0;
+		margin: 0;
+		width: 100%;
+		padding: 3rem 0;
+		min-height: 100vh;
+    	box-sizing: border-box;
+	}
+
+	.info-card {
+		flex-direction: column;
+		align-items: center;
+	}
+
+	.info-card > section {
+		width: 80%;
+		height: 22rem;
+	}
+
+	.block_purpose {
+		height: 15rem;
+	}
+
+	.block_progress {
+		height: 20rem;
+	}
+}
